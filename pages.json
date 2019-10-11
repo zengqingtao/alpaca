@@ -1,0 +1,22 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/alpaca/index",
+			"style": {
+				"navigationBarTitleText": "羊驼大赛"
+			}
+		},
+		{
+			"path": "pages/alpaca/guesRecord",
+			"style": {
+				"navigationBarTitleText": "竞猜记录"
+			}
+		}
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
