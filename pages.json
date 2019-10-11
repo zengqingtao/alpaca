@@ -7,6 +7,12 @@
 			}
 		},
 		{
+			"path": "pages/alpaca/alpaca",
+			"style": {
+				"navigationBarTitleText": "羊驼大赛"
+			}
+		},
+		{
 			"path": "pages/alpaca/guesRecord",
 			"style": {
 				"navigationBarTitleText": "竞猜记录"
