@@ -18,11 +18,11 @@
 			</view>
 			<view class="top-tabbar-item">
 				<view class="item-num">4</view>
-				<view class="item-font">猜中场数</view>
+				<view class="item-font">猜中次数</view>
 			</view>
 			<view class="top-tabbar-item">
 				<view class="item-num">9999</view>
-				<view class="item-font">竞猜金额</view>
+				<view class="item-font">总收益</view>
 			</view>
 		</view>
 		<!--记录列表 -->
@@ -35,21 +35,25 @@
 				<view class="list-header-font">收益</view>
 				<view class="list-header-font">比赛</view>
 			</view>
+			<!-- 有色横条 -->
+			<image class="stripe" src="../../static/gues/banned01.png"></image>
 			<!-- 列表项 -->
 			<view class="list-item" v-for="n in 2">
 				<view class="item-date">2019-10-01</view>
-				<view class="item-data" v-for="n in 3">
-					<view class="item-data-ing content-width">
-						<view>进行中</view>
-						<view class="item-data-ing-time">19:35:26</view>
-					</view>
-					<view class="content-width">中级场</view>
-					<view class="content-width">
-						<image class="item-data-img" src="../../static/gues/champion.png"></image>
-					</view>
-					<view class="content-width">---</view>
-					<view class="content-width">
-						<text class="item-data-see">查看</text>
+				<view class="item-data-box">
+					<view class="item-data" v-for="n in 3">
+						<view class="item-data-ing  content-width">
+							<view>进行中</view>
+							<view class="item-data-ing-time">19:35:26</view>
+						</view>
+						<view class="content-width">中级场</view>
+						<view class="content-width">
+							<image class="item-data-img" src="../../static/gues/champion.png"></image>
+						</view>
+						<view class="content-width">---</view>
+						<view class="content-width">
+							<text class="item-data-see">查看</text>
+						</view>
 					</view>
 				</view>
 			</view>
@@ -90,7 +94,6 @@
 		.top-box-img {
 			width: 100%;
 			height: 100%;
-			z-index: -10
 		}
 
 		// 左边的
@@ -164,15 +167,21 @@
 		font-weight: bold;
 		color: rgba(51, 51, 51, 1);
 		display: flex;
-		.list-header-font{
-			width:20%;
+
+		.list-header-font {
+			width: 20%;
 			text-align: center;
 		}
 	}
 
+	// 横条
+	.stripe {
+		width: 100%;
+		height: 33upx;
+	}
+
 	// 列表项
 	.list-item {
-		margin-top:33upx;
 		.item-date {
 			width: 185upx;
 			height: 43upx;
@@ -184,29 +193,40 @@
 			align-items: center;
 			opacity: 0.3;
 			background: rgba(117, 118, 128, 1);
-			margin-bottom: 32upx;
 		}
 
-		.item-data {
+		.item-data:first-child{
+			padding-top:32upx;
+		}
+		.item-data:last-child{
+			margin-bottom:32upx;
+		}
+		.item-data-box{
+			background-color: #FFF9F7;
+		}
+		.item-data{
 			font-size: 24upx;
 			color: rgba(34, 34, 34, 1);
 			display: flex;
 			align-items: center;
-			margin-bottom: 32upx;
-			.content-width{
-				width:20%;
+			padding-bottom: 32upx;
+			.content-width {
+				width: 20%;
 				text-align: center;
 			}
+
 			.item-data-img {
 				width: 48upx;
 				height: 48upx;
 			}
+
 			// 进行中的盒子
 			.item-data-ing {
 				.item-data-ing-time {
 					font-weight: 400;
 				}
 			}
+
 			// 查看
 			.item-data-see {
 				width: 92upx;
@@ -219,20 +239,23 @@
 			}
 		}
 	}
+
 	// 底部
-	.footer{
-		padding:20upx 0 ;
+	.footer {
+		padding: 20upx 0;
 		text-align: center;
-		font-size:24upx;
-		color:rgba(178,178,178,1);
-		.crossbar-box{
-			display:flex;
-			justify-content:center;
-			.crossbar{
-				margin:15upx 0;
-				width:90upx;
-				height:2upx;
-				background:rgba(178,178,178,1);
+		font-size: 24upx;
+		color: rgba(178, 178, 178, 1);
+
+		.crossbar-box {
+			display: flex;
+			justify-content: center;
+
+			.crossbar {
+				margin: 15upx 0;
+				width: 90upx;
+				height: 2upx;
+				background: rgba(178, 178, 178, 1);
 			}
 		}
 	}

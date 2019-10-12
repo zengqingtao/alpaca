@@ -1,0 +1,1 @@
+<view class="qiun-columns"><ve-line class="ve-line" vue-id="1" data="{{chartData1}}" colors="{{colors}}" settings="{{chartSettings1}}" series="{{series}}" bind:__l="__l"></ve-line></view>

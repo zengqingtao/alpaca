@@ -1,6 +1,12 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/alpaca/test",
+			"style": {
+				"navigationBarTitleText": "test"
+			}
+		},
+		{
 			"path": "pages/alpaca/index",
 			"style": {
 				"navigationBarTitleText": "羊驼大赛"
@@ -16,6 +22,12 @@
 			"path": "pages/alpaca/guesRecord",
 			"style": {
 				"navigationBarTitleText": "竞猜记录"
+			}
+		},
+		{
+			"path": "pages/alpaca/chart",
+			"style": {
+				"navigationBarTitleText": "折线图"
 			}
 		}
     ],

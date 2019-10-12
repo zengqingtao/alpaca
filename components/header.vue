@@ -146,7 +146,7 @@
 		.top-box-img {
 			width: 100%;
 			height: 100%;
-			z-index: -10
+			// z-index: -1
 		}
 
 		// 左边的

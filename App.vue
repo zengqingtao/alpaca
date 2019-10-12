@@ -15,4 +15,7 @@
 <style>
 	/*每个页面公共css */
 	@import "iconfont/iconfont.css";
+	page{
+		background-color:#fff !important;
+	}
 </style>

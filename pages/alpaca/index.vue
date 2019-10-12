@@ -58,20 +58,46 @@
 		data() {
 			return {
 				isShowNoteList: false,
-				isclose: true
+				isclose: true,
+				token: 0, //传递过来的用户信息
 			}
 		},
 		components: {
 			myheader
 		},
 		onLoad() {
-
+			console.log("window.location.href:", window.location.href);
+			this.splite();
+			console.log("$globalVariable:",this.$globalVariable.hostUrl);
+			this.getUserData();
 		},
 		methods: {
+			// 截取url的参数
+			splite() {
+				var url = window.location.href;
+				var query = url.split("?")[1];
+				var token = query.split("=")[1];
+				this.token = token;
+				console.log("this.token:", this.token);
+			},
 			// 关闭
 			close() {
 				this.isclose = false
 			},
+			// 请求获取可用玉米粒和竞猜
+			getUserData() {
+				uni.request({
+					url: '/Alpaca/getUserData', //仅为示例，并非真实接口地址。
+					method:"POST",
+					data: {
+						token: this.token
+					},
+					success: (res) => {
+						console.log("res:",res);
+					}
+				});
+			}
+
 		}
 	}
 </script>
@@ -242,15 +268,18 @@
 				font-weight: bold;
 				margin-top: 180upx;
 				text-align: center;
+
 				.modal-title-distance {
 					padding-bottom: 25upx;
 				}
 			}
+
 			// 确定按钮
 			.confirm-box {
 				display: flex;
 				justify-content: center;
 				align-items: center;
+
 				.confirm {
 					width: 320upx;
 					height: 98upx;
