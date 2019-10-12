@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "羊驼大赛",
-  "usingComponents": {}
+  "usingComponents": {
+    "myheader": "/components/header"
+  }
 }

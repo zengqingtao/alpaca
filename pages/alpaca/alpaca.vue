@@ -41,7 +41,7 @@
 						<image class="available-corn-img" src="../../static/modal/corn-grain.png"></image>
 					</view>
 					<view @click="close" class="confirm-box">
-						<view class="confirm" @click="confirm">确定</view>
+						<view class="confirm" @click="confirm">确 定</view>
 					</view>
 					<view class="think" @click="close">
 						再想想！
@@ -69,7 +69,7 @@
 			</view>
 		</view>
 		<!-- 近5场战绩（模态弹框） -->
-		<view class="bets-modal-box" >
+		<view class="bets-modal-box" v-if="false">
 			<view class="modal-content gains-modal-content">
 				<image class="headportrait" src="../../static/modal/alpaca-headportrait.png"></image>
 				<image class="close" src="../../static/index/close.png"></image>

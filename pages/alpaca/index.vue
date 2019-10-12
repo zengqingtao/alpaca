@@ -27,10 +27,10 @@
 			<view>到底啦!</view>
 		</view>
 		<!-- 玉米粒不足(模态弹框) -->
-		<view class="cornNum-notEnough" v-if="isclose">
+		<view class="cornNum-notEnough" v-if="!isclose">
 			<view class="modal-content">
-				<image class="headportrait" src="../../static/index/corn-headportrait.png"></image>
-				<image @click="close" class="close" src="../../static/index/close.png"></image>
+				<image class="headportrait" src="../../static/modal/corn-headportrait.png"></image>
+				<image @click="close" class="close" src="../../static/modal/close.png"></image>
 				<view>
 					<view class="modal-title" v-if="false">
 						<view class="modal-title-distance">当前的玉米粒不足100</view>
@@ -44,7 +44,7 @@
 						<view class="modal-title-distance">休赛中无法下注</view>
 					</view>
 					<view @click="close" class="confirm-box">
-						<view class="confirm">确定</view>
+						<view class="confirm">确 定</view>
 					</view>
 				</view>
 			</view>

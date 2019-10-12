@@ -24,122 +24,6 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.top-box {
-  width: 100%;
-  height: 334rpx;
-  position: relative;
-}
-.top-box .top-box-img {
-    width: 100%;
-    height: 100%;
-    z-index: -10;
-}
-.top-box .left-box {
-    width: 390rpx;
-    height: 49rpx;
-    border-radius: 30rpx;
-    position: absolute;
-    left: 24rpx;
-    top: 20rpx;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-wrap: nowrap;
-        -ms-flex-wrap: nowrap;
-            flex-wrap: nowrap;
-    -webkit-justify-content: space-around;
-        -ms-flex-pack: distribute;
-            justify-content: space-around;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    color: #fff;
-    font-size: 26rpx;
-    font-weight: 500;
-    background-color: #401c0d;
-}
-.top-box .left-box .left-box-img {
-      width: 30rpx;
-      height: 30rpx;
-      margin-left: 12rpx;
-}
-.top-box .left-box .left-box-corn {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-}
-.top-box .right-box {
-    position: absolute;
-    right: 0;
-    top: 20rpx;
-    background-color: #A2710C;
-    width: 166rpx;
-    height: 49rpx;
-    line-height: 49rpx;
-    font-size: 24rpx;
-    color: #fff;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    border-radius: 30rpx 0 0 30rpx;
-}
-.top-box .right-box .icon-btn_gengduo_xiangyoujiantoux {
-      font-size: 16rpx;
-      padding-left: 6rpx;
-}
-.top-tabbar {
-  height: 172rpx;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  z-index: 10;
-  -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-          justify-content: space-around;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border-radius: 16rpx;
-  margin: -86rpx 24rpx 0 24rpx;
-  background-color: #fff;
-  -webkit-box-shadow: 0px 6px 13px 0px rgba(82, 82, 82, 0.21);
-          box-shadow: 0px 6px 13px 0px rgba(82, 82, 82, 0.21);
-}
-.top-tabbar .top-tabbar-item {
-    text-align: center;
-}
-.top-tabbar .top-tabbar-img {
-    width: 82rpx;
-    height: 82rpx;
-    border-radius: 50%;
-}
-.top-tabbar .top-tabbar-font {
-    font-size: 24rpx;
-}
-.swiper {
-  background-color: #FEF4BC;
-  margin: 0 20rpx;
-  height: 40rpx;
-  border-radius: 20rpx;
-  margin-top: 20rpx;
-}
 .site-num-list {
   margin: 50rpx 20rpx 0rpx 20rpx;
 }
@@ -161,28 +45,28 @@
     box-sizing: border-box;
     margin-bottom: 32rpx;
 }
-.site-num-list .site-num-item .site-num-item-img {
+.site-num-list .site-num-item .item-img {
       width: 220rpx;
       height: 100%;
       border-radius: 16rpx 0 0 16rpx;
 }
-.site-num-list .site-num-item .site-num-item-right {
+.site-num-list .site-num-item .item-right {
       width: 482rpx;
       padding-left: 33rpx;
       position: relative;
 }
-.site-num-list .site-num-item .site-num-item-right .site-class {
-        margin-top: 26rpx;
+.site-num-list .site-num-item .item-right .site-class {
+        margin-top: 16rpx;
         font-size: 36rpx;
         font-weight: bold;
         color: #222222;
 }
-.site-num-list .site-num-item .site-num-item-right .games-limit {
-        margin-top: 18rpx;
+.site-num-list .site-num-item .item-right .games-limit {
+        margin-top: 11.5rpx;
         font-size: 26rpx;
         color: #999999;
 }
-.site-num-list .site-num-item .site-num-item-right .multiple-box {
+.site-num-list .site-num-item .item-right .multiple-box {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -191,22 +75,22 @@
         -webkit-align-items: baseline;
             -ms-flex-align: baseline;
                 align-items: baseline;
+        margin-top: 16rpx;
 }
-.site-num-list .site-num-item .site-num-item-right .multiple-box .multiple-box-num {
+.site-num-list .site-num-item .item-right .multiple-box .multiple-box-num {
           font-size: 60rpx;
-          margin-top: 12rpx;
           font-weight: bold;
           color: #f00;
 }
-.site-num-list .site-num-item .site-num-item-right .multiple-box .multiple-box-font {
+.site-num-list .site-num-item .item-right .multiple-box .multiple-box-font {
           padding-left: 8rpx;
           font-size: 36rpx;
           color: #222222;
 }
-.site-num-list .site-num-item .site-num-item-right .to-join {
+.site-num-list .site-num-item .item-right .to-join {
         position: absolute;
-        right: 20rpx;
-        bottom: 25rpx;
+        right: 24rpx;
+        bottom: 29rpx;
         font-size: 26rpx;
         width: 148rpx;
         height: 55rpx;
@@ -226,5 +110,117 @@
         border-radius: 28rpx;
         background: -o-linear-gradient(186deg, #ff8441 0%, #ffcb40 100%);
         background: linear-gradient(264deg, #ff8441 0%, #ffcb40 100%);
+}
+.site-num-list .site-num-item .item-right .matching {
+        color: #999999;
+        border: 1rpx solid #bfbfbf;
+        background: #fff;
+}
+.site-num-list .site-num-item .item-right .item-right-img {
+        width: 88rpx;
+        height: 88rpx;
+        position: absolute;
+        top: 0;
+        right: 0;
+}
+.footer {
+  padding: 59rpx 0 20rpx 0;
+  text-align: center;
+  font-size: 24rpx;
+  color: #b2b2b2;
+}
+.footer .crossbar-box {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+.footer .crossbar-box .crossbar {
+      margin: 15rpx 0;
+      width: 90rpx;
+      height: 2rpx;
+      background: #b2b2b2;
+}
+.cornNum-notEnough {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(0, 0, 0, 0.89);
+}
+.cornNum-notEnough .modal-content {
+    width: 604rpx;
+    height: 503rpx;
+    position: relative;
+    background-color: #fff;
+    border-radius: 32rpx;
+}
+.cornNum-notEnough .modal-content .headportrait {
+      width: 198rpx;
+      height: 198rpx;
+      position: absolute;
+      top: -62rpx;
+      left: 50%;
+      margin-left: -99rpx;
+}
+.cornNum-notEnough .modal-content .close {
+      width: 36rpx;
+      height: 36rpx;
+      position: absolute;
+      top: 37rpx;
+      right: 37rpx;
+}
+.cornNum-notEnough .modal-content .modal-title {
+      font-size: 36rpx;
+      font-weight: bold;
+      margin-top: 180rpx;
+      text-align: center;
+}
+.cornNum-notEnough .modal-content .modal-title .modal-title-distance {
+        padding-bottom: 25rpx;
+}
+.cornNum-notEnough .modal-content .confirm-box {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+}
+.cornNum-notEnough .modal-content .confirm-box .confirm {
+        width: 320rpx;
+        height: 98rpx;
+        line-height: 98rpx;
+        background: -o-linear-gradient(6deg, #ffcb40 0%, #ff8441 100%);
+        background: linear-gradient(84deg, #ffcb40 0%, #ff8441 100%);
+        border-radius: 47rpx;
+        color: #fff;
+        font-size: 36rpx;
+        text-align: center;
+        margin-top: 45rpx;
 }
 

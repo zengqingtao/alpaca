@@ -24,11 +24,11 @@
 				<image class="top-tabbar-img" src="../../static/index/corn.png"></image>
 				<view class="top-tabbar-font">玉米商城</view>
 			</view>
-			<view class="top-tabbar-item">
+			<navigator url="guesRecord" class="top-tabbar-item">
 				<image class="top-tabbar-img" src="../../static/index/gues.png"></image>
 				<view class="top-tabbar-font">我的竞猜</view>
-			</view>
-			<view class="top-tabbar-item">
+			</navigator>
+			<view  @click="receiveCorn" class="top-tabbar-item">
 				<image class="top-tabbar-img" src="../../static/index/collect-corn.png"></image>
 				<view class="top-tabbar-font">领取玉米</view>
 			</view>
@@ -45,6 +45,68 @@
 				<view class="swiper-item uni-bg-blue">C</view>
 			</swiper-item>
 		</swiper>
+		<!-- 领取玉米(模态框) -->
+		<view class="cornNum-notEnough" v-if="isShowFreeReceive">
+			<view class="modal-content">
+				<image class="headportrait" src="../../static/modal/corn-headportrait.png"></image>
+				<image class="close" src="../../static/modal/close.png"></image>
+				<view>
+					<view class="modal-title">
+						免费领取玉米
+					</view>
+					<view class="surplus-num"  v-if="receiveNum>0">
+						剩余 {{receiveNum}} 次
+					</view>
+					<view class="surplus-num-box" v-if="receiveNum==0">
+						<view class="surplus-num">
+							剩余 {{receiveNum}} 次
+						</view>
+						<view class="gains-able-num">
+							每天可获得2次领取次数
+						</view>
+					</view>
+					<view @click="receiveCofirmbtn" class="confirm-box">
+						<view class="confirm-child-box">
+							<view class="confirm">确 定</view>
+							<image class="confirm-img" src="../../static/modal/corn-grain.png"></image>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<!-- 无法领取玉米(模态框) -->
+		<view class="cornNum-notEnough" v-if="false">
+			<view class="modal-content">
+				<image class="headportrait" src="../../static/modal/corn-headportrait.png"></image>
+				<image class="close" src="../../static/modal/close.png"></image>
+				<view>
+					<view class="unable-to-receive-box">
+						<view>
+							当前的玉米粒大于10
+						</view>
+						<view class="unable-to-receive-font">
+							无法领取
+						</view>
+					</view>
+					<view class="confirm-box">
+						<view class="confirm-child-box">
+							<view class="confirm">确 定</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<!-- 恭喜获得（模态弹框） -->
+		<view class="congratulations-modal" v-if="false">
+			<view class="congratulations-content">
+				<image class="bg-img" src="../../static/modal/congratulations.png"></image>
+				<view class="content-box">
+					<image class="num-img" src="../../static/modal/+10.png"></image>
+					<view class="num-font">您成功获得10粒玉米</view>
+					<image class="confirm-btn" src="../../static/modal/confirm-btn.png"></image>
+				</view>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -52,14 +114,25 @@
 	export default {
 		data() {
 			return {
-				isShowNoteList: false,
+				isShowFreeReceive:false,//是否显示免费领取玉米弹框
+				receiveNum:2 //可领取玉米的次数
 			}
 		},
 		onLoad() {
 
 		},
 		methods: {
-			
+			// 点击领取玉米-弹框
+			receiveCorn(){
+				this.isShowFreeReceive = true
+			},
+			// 领取玉米的"确定"按钮
+			receiveCofirmbtn(){
+				if(this.receiveNum>0){
+					this.receiveNum--;
+				}
+				this.isShowFreeReceive = false;
+			}
 		}
 	}
 </script>
@@ -163,5 +236,159 @@
 		height: 40upx;
 		border-radius: 20upx;
 		margin-top: 20upx;
+	}
+
+	// 领取玉米（模态弹框）
+	// 玉米粒不足
+	.cornNum-notEnough {
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 1000;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: rgba(0, 0, 0, 0.89);
+
+		.modal-content {
+			width: 604upx;
+			height: 503upx;
+			position: relative;
+			background-color: #fff;
+			border-radius: 32upx;
+			// display: flex;
+			// justify-content: center;
+
+			// 头像
+			.headportrait {
+				width: 198upx;
+				height: 198upx;
+				position: absolute;
+				top: -62upx;
+				left: 50%;
+				margin-left: -99upx;
+			}
+
+			// 关闭"X"
+			.close {
+				width: 36upx;
+				height: 36upx;
+				position: absolute;
+				top: 37upx;
+				right: 37upx;
+			}
+
+			//模态框标题
+			.modal-title {
+				font-size: 36upx;
+				font-weight: bold;
+				margin-top: 140upx;
+				text-align: center;
+			}
+
+			// 剩余次数
+			.surplus-num {
+				padding-top: 35upx;
+				text-align: center;
+				font-size: 46upx;
+				font-weight: bold;
+				color: rgba(252, 61, 61, 1);
+			}
+
+			// 每天可获得次数
+
+			.gains-able-num {
+				font-size: 24upx;
+				font-weight: 400upx;
+				color: rgba(153, 153, 153, 1);
+				text-align: center;
+				padding-top: 20upx;
+			}
+
+
+			// 确定按钮
+			.confirm-box {
+				display: flex;
+				justify-content: center;
+
+				.confirm-child-box {
+					width: 320upx;
+					height: 98upx;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					line-height: 98upx;
+					background: linear-gradient(84deg, rgba(255, 203, 64, 1) 0%, rgba(255, 132, 65, 1) 100%);
+					border-radius: 47upx;
+					margin-top: 50upx;
+
+					.confirm{
+						color: #fff;
+						font-size: 36upx;
+					}
+
+					.confirm-img {
+						width: 52upx;
+						height: 52upx;
+						margin-left: 20upx;
+					}
+				}
+			}
+		}
+	}
+
+	// 无法领取玉米（模态框）
+	.unable-to-receive-box {
+		text-align: center;
+		font-size: 36upx;
+		font-weight: bold;
+		margin-top: 151upx;
+
+		.unable-to-receive-font {
+			padding-top: 20upx;
+		}
+	}
+	// 恭喜获得
+	.congratulations-modal{
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 1000;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: rgba(0, 0, 0, 0.89);
+		.congratulations-content{
+			width: 750upx;
+			height: 716upx;
+			position: relative;
+			.bg-img{
+				width:100%;
+				height:100%;
+				position: absolute;
+				z-index: -10;
+			}
+			.content-box{
+				text-align:center;
+				.num-img{
+					margin-top:380upx;
+					width:70upx;
+					height:41upx;
+				}
+				.num-font{
+					font-size:24upx;
+					color:#fff;
+				}
+				.confirm-btn{
+					width:244upx;
+					height:78upx;
+					margin-top:81upx;
+				}
+			}
+		}
 	}
 </style>
