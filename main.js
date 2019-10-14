@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import App from './App'
-import VCharts from 'v-charts' //引入v-charts
+// import VCharts from 'v-charts' //引入v-charts
 import globalVariable from './globalVariable.js' //引入全局变量文件
 
-Vue.use(VCharts) //
+// Vue.use(VCharts) //
 Vue.prototype.$globalVariable = globalVariable; 
 
 Vue.config.productionTip = false

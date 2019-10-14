@@ -53,7 +53,7 @@
 		<view class="bets-modal-box" v-if="success">
 			<view class="modal-content success-modal-content">
 				<image class="headportrait" src="../../static/modal/alpaca-headportrait.png"></image>
-				<image  @click="successClose" class="close" src="../../static/index/close.png"></image>
+				<image @click="successClose" class="close" src="../../static/index/close.png"></image>
 				<view>
 					<view class="alpaca-class">羊驼A</view>
 					<view class="success-title">
@@ -69,16 +69,34 @@
 			</view>
 		</view>
 		<!-- 近5场战绩（模态弹框） -->
-		<view class="bets-modal-box" v-if="false">
+		<view class="bets-modal-box" v-if="true">
 			<view class="modal-content gains-modal-content">
 				<image class="headportrait" src="../../static/modal/alpaca-headportrait.png"></image>
 				<image class="close" src="../../static/index/close.png"></image>
 				<view>
 					<view class="alpaca-class">羊驼A</view>
-					<view class="ve-line-box">
-						<ve-line class="ve-line" :data="chartData"  :colors="colors" :yAxis="yAxis"  :series="series"></ve-line>
+					<view class="ucharts-box">
+						<!-- ↓ -->
+						<view class="qiun-columns">
+							<view class="qiun-bg-white qiun-title-bar qiun-common-mt">
+								<view class="qiun-title-dot-light ucharts-title">近5场战绩</view>
+							</view>
+							<view class="qiun-charts">
+								<canvas canvas-id="canvasLineA" id="canvasLineA" class="charts" :width="cWidth*pixelRatio" :height="cHeight*pixelRatio"
+								 :style="{'width':cWidth+'px','height':cHeight+'px'}"></canvas>
+							</view>
+						</view>
+						<!-- ↑ -->
 					</view>
-					<view  class="confirm-box">
+					<view class="subtitle-box">
+						<view class="">
+							近20场平均名次: 2.5
+						</view>
+						<view class="">
+							胜率: 25%
+						</view>
+					</view>
+					<view class="confirm-box">
 						<view class="confirm">猜ta获胜</view>
 					</view>
 					<view class="think" @click="successClose">
@@ -92,22 +110,18 @@
 
 <script>
 	import myheader from "../../components/header.vue"
+	import uCharts from '@/components/u-charts/u-charts.js';
+	var _self;
+	var canvaLineA = null;
 	export default {
 		data() {
 			return {
 				isclose: true,
-				success:false,
+				success: false,
 				// 
-				chartData: { //columns必须与rows同语言
-					columns: ['hour', 'td_new_user_num'],
-					rows: [
-						{ 'hour': '1场', 'td_new_user_num': 1},
-						{ 'hour': '2场', 'td_new_user_num': 2},
-						{ 'hour': '3场', 'td_new_user_num': 1},
-						{ 'hour': '4场', 'td_new_user_num': 4},
-						{ 'hour': '5场', 'td_new_user_num': 4},
-					]
-				},
+				cWidth: '',
+				cHeight: '',
+				pixelRatio: 1,
 				// 
 			}
 		},
@@ -115,7 +129,10 @@
 			myheader
 		},
 		onLoad() {
-				this.mychart();
+			_self = this;
+			this.cWidth = uni.upx2px(550);
+			this.cHeight = uni.upx2px(300);
+			this.getServerData();
 		},
 		methods: {
 			// 关闭
@@ -130,62 +147,83 @@
 				console.log("value:", e.detail)
 			},
 			// 确定
-			confirm(){
+			confirm() {
 				this.success = true
 			},
 			// 点击关闭弹框
-			successClose(){
+			successClose() {
 				this.success = false
 			},
-			// 
-			
-			mychart() {
-				this.colors=["#FFAB79"];
-				
-				this.yAxis = {
-					name:["近5场战绩"],
-					axisTick:{
-						show:false
-					},//是否显示刻度
-					type: 'value',
-					// scale:true ,//刻度不强制从0开始
-					// data:[5,4,3,2,1],
-					// splitLine:{
-					// 	show:true,
-					// 	interval: 'auto',
-					// 	}
-				}
-				
-				
-				this.series = [{
-						type: "line",
-						data: [9,2,1,4,4],
-						lineStyle: {
-							type: 'solid',
-							color: "#FFAB79"
-						},
-						areaStyle: {
-							color: {
-								type: 'linear',
-								showAllSymbol: true,
-								x: 0,
-								y: 0,
-								x2: 0,
-								y2: 1,
-								colorStops: [{
-									offset: 0,
-									color: '#FFAB79' // 0% 处的颜色
-								}, {
-									offset: 1,
-									color: '#FFFFFF' // 100% 处的颜色
-								}],
-								global: false // 缺省为 false
+
+			// ↓
+			getServerData() {
+				let LineA = {
+					categories: [],
+					series: []
+				};
+				//这里我后台返回的是数组，所以用等于，如果您后台返回的是单条数据，需要push进去
+				LineA.categories = ["1场", "2场", "3场", "4场", "5场"];
+				LineA.series = [{
+					data: [35, 8, 25, 37, 4]
+				}];
+				_self.showLineA("canvasLineA", LineA);
+			},
+			showLineA(canvasId, chartData) {
+				canvaLineA = new uCharts({
+					$this: _self,
+					canvasId: canvasId,
+					type: 'line',
+					colors: ['#FEA168', '#f04864', '#8543e0', '#90ed7d'],
+					fontSize: 11,
+					padding: [15, 15, 0, 15],
+					legend: {
+						show: false,
+						padding: 5,
+						lineHeight: 11,
+						margin: 0,
+					},
+					dataLabel: false,
+					dataPointShape: true,
+					background: '#FFFFFF',
+					pixelRatio: _self.pixelRatio,
+					categories: chartData.categories,
+					series: chartData.series,
+					animation: true,
+					xAxis: {
+						type: 'grid',
+						gridColor: '#CCCCCC',
+						gridType: 'dash',
+						dashLength: 8,
+
+						max: 20
+						// disableGrid:true
+					},
+					yAxis: {
+						data: [{
+							calibration: true,
+							position: 'left',
+							title: '',
+							titleFontSize: 12,
+							min: 1,
+							format: (val) => {
+								return val.toFixed(0)
 							}
+						}],
+						// showTitle: true,
+						gridType: 'dash',
+						dashLength: 4,
+						splitNumber: 5
+					},
+					width: _self.cWidth * _self.pixelRatio,
+					height: _self.cHeight * _self.pixelRatio,
+					extra: {
+						line: {
+							type: 'straight'
 						}
 					}
-				]
+				});
+
 			},
-			
 			// 
 		}
 	}
@@ -343,18 +381,31 @@
 				margin-top: 140upx;
 				text-align: center;
 			}
+
 			// 折线图
-			.ve-line-box{
-				width:480upx;
-				height:430upx;
+			.ucharts-box {
+				display: flex;
+				justify-content: center;
+				padding-top: 30upx;
+
+				.ucharts-title {
+					font-size: 26upx;
+					color: rgba(34, 34, 34, 1);
+					padding-left: 25upx;
+				}
 			}
-			.ve-line{
-				width:100%;
-				height:100%;
+
+			// 折线图下的标题
+			.subtitle-box {
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				box-sizing:border-box;
+				padding:51upx 55upx 0 55upx;
+				font-size: 26upx;
+				color: rgba(153, 153, 153, 1);
 			}
-			.canvas{
-				height:400upx !important;
-			}
+
 			// 输入框
 			.inp-box {
 				padding-top: 40upx;
@@ -413,9 +464,9 @@
 					margin-top: 45upx;
 				}
 			}
-
 			// 再想想
 			.think {
+				text-decoration:underline;
 				padding-top: 35upx;
 				font-size: 26upx;
 				text-align: center;
@@ -435,26 +486,30 @@
 			font-weight: bold;
 			color: rgba(34, 34, 34, 1);
 		}
+
 		.corn-img-box {
 			display: flex;
 			justify-content: center;
-			padding-top:20upx;
+			padding-top: 20upx;
+
 			.corn-img {
 				width: 129upx;
 				height: 129upx;
 			}
 		}
-		.click-close{
-			padding-top:20upx;
+
+		.click-close {
+			padding-top: 20upx;
 			text-align: center;
-			font-size:32upx;
-			font-weight:400;
-			text-decoration:underline;
-			color:rgba(153,153,153,1);
+			font-size: 32upx;
+			font-weight: 400;
+			text-decoration: underline;
+			color: rgba(153, 153, 153, 1);
 		}
 	}
+
 	// 近5场战绩（模态框）
-	.gains-modal-content{
-		height:888upx !important; 
+	.gains-modal-content {
+		height: 888upx !important;
 	}
 </style>

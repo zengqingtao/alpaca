@@ -23,12 +23,6 @@
 			"style": {
 				"navigationBarTitleText": "竞猜记录"
 			}
-		},
-		{
-			"path": "pages/alpaca/chart",
-			"style": {
-				"navigationBarTitleText": "折线图"
-			}
 		}
     ],
 	"globalStyle": {
