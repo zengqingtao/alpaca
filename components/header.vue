@@ -200,17 +200,19 @@
 			}
 		},
 		created() {
-			var url = window.location.href;
-			var query = url.split("?")[1];
-			var token = query.split("=")[1];
-			var token1 = token.split("&")[0];
-			this.token = token1;
+			// var url = window.location.href;
+			// var query = url.split("?")[1];
+			// var token = query.split("=")[1];
+			// var token1 = token.split("&")[0];
+			// this.token = token1;
+			this.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjE3Mywib3BlbmlkIjoib0tVVUs0M0RJNGhGT0cxTG1Gc0t0WXRSakcwcyIsInVuaW9uaWQiOiJvcW1rbDFpVDRLVDFxaDJnc2hDNDJFdF9VMkJZIiwicGxhdGZyb21faWQiOjAsImV4cCI6MTU3NjM3Njc2NywicGxhdGZvcm0iOiJtb2JpbGUifQ.UTVFkgfnns_F-41ESYaD9D30yUjwuzuYkl14XzwtDWRg-Eg8rXBltSbs9auiUSo73Wc8vjXc_9ncbQFVMgf_JA";
 			uni.$on('updateCornNum', (data) => {
 				this.cornNum = data.availableCorn;
 				this.playCount = data.guessCorn
 			})
 			uni.$on('tomatching', (data) => {
 				this.getAccount();
+				this.getTopNotice();
 				this.matching = data.msg
 			})
 			this.getTopNotice();
